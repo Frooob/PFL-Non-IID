@@ -9,6 +9,7 @@ import numpy as np
 import torchvision
 import logging
 
+from flcore.servers.serverwavg import FedWavg
 from flcore.servers.serveravg import FedAvg
 from flcore.servers.serverpFedMe import pFedMe
 from flcore.servers.serverperavg import PerAvg
@@ -149,6 +150,9 @@ def run(args):
         # select algorithm
         if args.algorithm == "FedAvg":
             server = FedAvg(args, i)
+        
+        elif args.algorithm == "FedWavg":
+            server = FedWavg(args, i)
 
         elif args.algorithm == "Local":
             server = Local(args, i)
